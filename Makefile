@@ -1,4 +1,4 @@
-all: rapidJSON_wrapper.o
+it: rapidJSON_wrapper.o
 	gcc -o rapidJSON_wrapper rapidJSON_wrapper.o
 
 clean: rapidJSON_wrapper.o
