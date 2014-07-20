@@ -3,8 +3,8 @@
  * Author:    Kenneth Nierenhausen
  * Date:      July 11, 2014
  *****************************************************************************/
-#include "rapidJSON_wrapper.h"
-#include "lib/rapidjson/include/rapidjson/reader.h"
+#include "rapidJSON_interface.h"
+//#include "lib/rapidjson/include/rapidjson/reader.h"
 
 /* Parses the JSON string and calls those functions when it hits each token */
 int to_value(tm_json_t* handler, const char* json_stringified) {
