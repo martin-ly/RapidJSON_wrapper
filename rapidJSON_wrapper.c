@@ -55,12 +55,14 @@ void cb_endArray(size_t val) { printf("END_ARRAY: %llu\n",(unsigned long long)va
 int main(void) {
   tm_json_t* handler;
   printf("=====================================================================\n");
-  to_value(handler,"{{}}");
-/*  printf("=====================================================================\n");
+  to_value(handler,"{}");
+  printf("=====================================================================\n");
+  to_value(handler,"{\"a\": 1}");
+  printf("=====================================================================\n");
   to_value(handler,"{\"a\":1,\"b\":{\"c\":2},\"d\":3}");
   printf("=====================================================================\n");
   to_value(handler,"{\"clientX\":39,\"clientY\":17,\"offsetX\":39,\"offsetY\":17}");
   printf("=====================================================================\n");
   to_value(handler,"{\"name\":\"Jim Cowart\",\"location\":{\"city\":{\"name\":\"Chattanooga\",\"population\":167674},\"state\":{\"name\":\"Tennessee\",\"abbreviation\":\"TN\",\"population\":6403000}},\"company\":\"appendTo\"}");
-*/  return 0;
+  return 0;
 }
