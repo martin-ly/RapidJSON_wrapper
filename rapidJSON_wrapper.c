@@ -4,7 +4,6 @@
  * Date:      July 11, 2014
  *****************************************************************************/
 #include "rapidJSON_interface.h"
-//#include "lib/rapidjson/include/rapidjson/reader.h"
 
 /* Parses the JSON string and calls those functions when it hits each token */
 int to_value(tm_json_t* handler, const char* json_stringified) {
@@ -13,21 +12,22 @@ int to_value(tm_json_t* handler, const char* json_stringified) {
   handler = (tm_json_t*)malloc(sizeof(tm_json_t));
 
   /* link the function pointers to the callbacks */
-  handler->fp_default = cb_default;
-  handler->fp_null = cb_null;
-  handler->fp_bool = cb_bool;
-  handler->fp_int = cb_int;
-  handler->fp_uint = cb_uint;
-  handler->fp_int64 = cb_int64;
-  handler->fp_uint64 = cb_uint64;
-  handler->fp_double = cb_double;
-  handler->fp_string = cb_string;
-  handler->fp_startObject = cb_startObject;
-  handler->fp_endObject = cb_endObject;
-  handler->fp_startArray = cb_startArray;
-  handler->fp_endArray = cb_endArray;
+  handler->Default = cb_default;
+  handler->Null = cb_null;
+  handler->Bool = cb_bool;
+  handler->Int = cb_int;
+  handler->Uint = cb_uint;
+  handler->Int64 = cb_int64;
+  handler->Uint64 = cb_uint64;
+  handler->Double = cb_double;
+  handler->String = cb_string;
+  handler->StartObject = cb_startObject;
+  handler->EndObject = cb_endObject;
+  handler->StartArray = cb_startArray;
+  handler->EndArray = cb_endArray;
 
-  /* 88 lines of parsing code that I got rid of... what goes here? */
+  /* call the external "C" function declared in the interface included */
+  Parse(json_stringified,handler);
 
   /* free the handler (this may need to be updated once implemented) */
   free(handler);
@@ -45,11 +45,11 @@ void cb_uint(unsigned val) { printf("UINT: %d\n",val); }
 void cb_int64(int64_t val) { printf("INT_64: %"PRId64"\n",val); }
 void cb_uint64(uint64_t val) { printf("UINT_64: %"PRIu64"\n",val); }
 void cb_double(double val) { printf("DOUBLE: %f\n",val); }
-void cb_string(char* val) { printf("STRING: %s\n",val); }
+void cb_string(const char* val,size_t size,bool set) { printf("STRING: %s\n",val); }
 void cb_startObject(void) { printf("START_OBJECT\n"); }
-void cb_endObject(void/*TODO*/) { printf("END_OBJECT: todo\n"); }
+void cb_endObject(size_t val) { printf("END_OBJECT: %llu\n",(unsigned long long)val); }
 void cb_startArray(void) { printf("START_ARRAY\n"); }
-void cb_endArray(void/*TODO*/) { printf("END_ARRAY: todo\n"); }
+void cb_endArray(size_t val) { printf("END_ARRAY: %llu\n",(unsigned long long)val); }
 
 /* Temporaorily used to test to_value */
 int main(void) {

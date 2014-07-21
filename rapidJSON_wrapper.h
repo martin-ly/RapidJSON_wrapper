@@ -7,19 +7,19 @@
 
 /* A collection of function pointers needed by BaseReader in rapidJSON */
 typedef struct tm_json {
-  void (*fp_default)(void);
-  void (*fp_null)(void);
-  void (*fp_bool)(bool);
-  void (*fp_int)(int);
-  void (*fp_uint)(unsigned);
-  void (*fp_int64)(int64_t);
-  void (*fp_uint64)(uint64_t);
-  void (*fp_double)(double);
-  void (*fp_string)(char*);
-  void (*fp_startObject)();
-  void (*fp_endObject)(void/*TODO*/);
-  void (*fp_startArray)(void);
-  void (*fp_endArray)(void/*TODO*/);
+  void (*Default)(void);
+  void (*Null)(void);
+  void (*Bool)(bool);
+  void (*Int)(int);
+  void (*Uint)(unsigned);
+  void (*Int64)(int64_t);
+  void (*Uint64)(uint64_t);
+  void (*Double)(double);
+  void (*String)(const char*,size_t,bool);
+  void (*StartObject)();
+  void (*EndObject)(size_t);
+  void (*StartArray)(void);
+  void (*EndArray)(size_t);
 } tm_json_t;
 
 /* prototypes */
@@ -32,8 +32,8 @@ void cb_uint(unsigned);
 void cb_int64(int64_t);
 void cb_uint64(uint64_t);
 void cb_double(double);
-void cb_string(char*);
+void cb_string(const char*,size_t,bool);
 void cb_startObject(void);
-void cb_endObject(void/*TODO*/);
+void cb_endObject(size_t);
 void cb_startArray(void);
-void cb_endArray(void/*TODO*/);
+void cb_endArray(size_t);

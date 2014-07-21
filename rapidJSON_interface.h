@@ -1,4 +1,3 @@
 #include "rapidJSON_wrapper.h"
-#include "lib/rapidjson/include/rapidjson/reader.h"
 
-extern "C" bool Parse(tm_json_t* handler,const char* is);
+extern "C" bool Parse(char* json_s,tm_json_t* handler);
