@@ -1,4 +1,8 @@
-/* include all the boring stuff here so it does not waste space */
+/******************************************************************************
+ * Objective: Wrapper over parse function that rapidJSON implements in C++ (H)
+ * Author:    Kenneth Nierenhausen
+ * Date:      July 11, 2014
+ *****************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -23,7 +27,7 @@ typedef struct tm_json {
 } tm_json_t;
 
 /* prototypes */
-int to_value(tm_json_t*, const char*);
+static int to_value(tm_json_t*, const char*);
 void cb_default(void);
 void cb_null(void);
 void cb_bool(bool);

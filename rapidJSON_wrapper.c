@@ -1,12 +1,12 @@
 /******************************************************************************
- * Objective: Wrapper over the C++ fucntions RapidJSON needs in order to parse
+ * Objective: Wrapper over parse function that rapidJSON implements in C++
  * Author:    Kenneth Nierenhausen
  * Date:      July 11, 2014
  *****************************************************************************/
 #include "rapidJSON_interface.h"
 
 /* Parses the JSON string and calls those functions when it hits each token */
-int to_value(tm_json_t* handler, const char* json_stringified) {
+static int to_value(tm_json_t* handler, const char* json_stringified) {
 
   /* allocate memory for the struct */
   handler = (tm_json_t*)malloc(sizeof(tm_json_t));
