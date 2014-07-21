@@ -22,7 +22,7 @@ extern "C" bool Parse(const char* json_s,tm_json_t* handler) {
   FileReadStream is(stream, readBuffer, sizeof(readBuffer));
 
   // TODO: need to figure out when to close the stream
-  // fclose(stream);
+  fclose(stream);
 
   // pass the input stream and the actual handler to rapidJSON's Parse
   Reader reader;
