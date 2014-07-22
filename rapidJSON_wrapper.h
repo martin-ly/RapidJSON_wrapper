@@ -26,7 +26,7 @@ typedef struct tm_json {
   void (*EndArray)(size_t);
 } tm_json_t;
 
-/* prototypes */
+/* Prototypes */
 static int to_value(tm_json_t*, const char*);
 void cb_default(void);
 void cb_null(void);

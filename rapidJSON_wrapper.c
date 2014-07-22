@@ -32,6 +32,7 @@ static int to_value(tm_json_t* handler, const char* json_stringified) {
   /* free the handler (this may need to be updated once implemented) */
   free(handler);
 
+  /* successful return */
   return 0;
 
 }
@@ -45,7 +46,7 @@ void cb_uint(unsigned val) { printf("UINT: %d\n",val); }
 void cb_int64(int64_t val) { printf("INT_64: %"PRId64"\n",val); }
 void cb_uint64(uint64_t val) { printf("UINT_64: %"PRIu64"\n",val); }
 void cb_double(double val) { printf("DOUBLE: %f\n",val); }
-void cb_string(const char* val,size_t size,bool set) { printf("STRING: %s\n",val); }
+void cb_string(const char* val,size_t len,bool set) { printf("STRING: %s\n",val); }
 void cb_startObject(void) { printf("START_OBJECT\n"); }
 void cb_endObject(size_t val) { printf("END_OBJECT: %llu\n",(unsigned long long)val); }
 void cb_startArray(void) { printf("START_ARRAY\n"); }

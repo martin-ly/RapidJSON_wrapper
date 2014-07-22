@@ -7,6 +7,8 @@
  *****************************************************************************/
 #include "rapidJSON_wrapper.h"
 
+#define BUF_SIZE 65536
+
 #ifdef __cplusplus
 extern "C" {
 #endif

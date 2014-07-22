@@ -10,21 +10,22 @@
 #include "lib/rapidjson/include/rapidjson/reader.h"
 #include "lib/rapidjson/include/rapidjson/filereadstream.h"
 
-#define BUF_SIZE 65536
-
 using namespace rapidjson;
 
 extern "C" bool Parse(const char* json_s,tm_json_t* handler) {
   
-  // create an input stream from the stringified JSON input
+  /* create an input stream from the stringified JSON input */
   char readBuffer[BUF_SIZE];
   FILE* stream = fmemopen((char*)json_s,strlen(json_s),"r");
   FileReadStream is(stream, readBuffer, sizeof(readBuffer));
 
-  // TODO: need to figure out when to close the stream
+  /* close the stream */
   fclose(stream);
 
-  // pass the input stream and the actual handler to rapidJSON's Parse
+  /* create a defaults flags GenericReader object */
   Reader reader;
+
+  /* call rapidJSON's Parser using the input stream and tm_json_t handler */
   return reader.Parse(is,*handler);
+
 }
